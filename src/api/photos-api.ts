@@ -23,7 +23,8 @@ export const addPhoto = async (newPhoto: {
 }) => {
   const supabase = await createClient();
   const { error } = await supabase.from("photos").insert({
-    newPhoto,
+    caption: newPhoto.caption,
+    image_url: newPhoto.imageURL,
   });
 
   if (error) throw new Error(`Error adding photo: ${error.message}`);
